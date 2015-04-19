@@ -21,7 +21,11 @@
 <div class="navbar navbar-warning">
     <div class="navbar-header">
         
-        <a class="navbar-brand" href="index.html">Paisool Delivery</a>
+        <a class="navbar-brand" href="#">Paisool Delivery</a>
+    </div>
+    <div class="navbar-header">
+        
+        <a class="navbar-brand" href="cart.html">Cart</a>
     </div>
 </div>
 
@@ -43,7 +47,7 @@
 	</div>
 </div>
 
-<div class="col-md-10" id="items">
+<div class="col-md-10" id="items" style="display: none">
 
 </div>
 
@@ -68,6 +72,7 @@ $.material.init();
 
 $(document).ready(function() {
 	$('#searchstore').click(function() {
+		$('#items').hide();
 		var store = $('#store').val();
 		//console.log(store);
 		$.ajax({
@@ -77,9 +82,9 @@ $(document).ready(function() {
         	$("#items").html('') }
 
 		}).done(function(res, status, err) {
-			
-			$('#items').append(res);
-
+			var $res = res;
+			$('#items').append($res);
+			$('#items').slideDown(1500);
 		})
 	})
 })
